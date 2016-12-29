@@ -1,0 +1,55 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    <!--  <bean id="myfirstprogBean" class="org.kd.springcore.MyFirstProg">               -->
+    <!-- ///////////////////////// this for given value to member data/////////////////// -->
+    <!--  <property name="welcomeNote" value="Welcome! To My First Spring Project by giving value in property"/> -->
+       
+    <!--////////////////// this is DI by constructor //////////////////////////  -->
+    <!--            <constructor-arg ref="teaBean"></constructor-arg>            -->
+          
+    <!--////////////////// this is DI by setter method ////////////////////////////-->
+    <!--               <property name="hotDrinks" ref="teaBean"/>                  -->
+    <!--////////////////// this is DI by java collection //////////////////////////-->
+                    <!--   <property name="programList">
+                       <list>
+                         <value>By List</value>
+                         <value>By Set</value>
+                         <value>By Map</value>
+                        </list>
+                      </property>
+                      
+   </bean>                                                                    
+   <bean id="teaBean" class="org.kd.springcore.Tea"></bean>                       -->
+   
+   <!--////////////////// this is Bean Factory  //////////////////////////  -->
+   <!--<bean id="myfirstprogBean" class="org.kd.springcore.MyFirstProg" scope="prototype"></bean>-->
+   <!--<bean id="myfirstprogBean" class="org.kd.springcore.MyFirstProg" scope="singleton"></bean>-->
+   
+   <!-- ////////////////////////////////////////this is bean life cycle/////////////////////////////////////// -->
+   <!--<bean id="myfirstprogBean" class="org.kd.springcore.MyFirstProg" init-method="init" destroy-method="destroy"></bean>-->
+   
+    <!-- ////////////////////////////////////////this is bean life cycle by Annotation/////////////////////////////////////// -->
+  <!--  <bean id="myfirstprogBean" class="org.kd.springcore.MyFirstProg" ></bean> --> 
+   <!--  <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean>-->
+   
+   <!-- ////////////////////////////////////////this is bean post processor concept/////////////////////////////////////// -->
+   <!-- <bean id="myfirstprogBean" class="org.kd.springcore.MyFirstProg" init-method="init" destroy-method="destroy"></bean>
+   <bean class="org.kd.springcore.DemoBeanPostProcessor"></bean> -->
+   <!-- //////////////////////////modify the value of members data using bean factory post processor by configuration changes in
+   ///////////////////////////java class instead of SpringConfig.xml file ////////////////////////////////  -->
+   <!-- <bean id="myfirstprogBean" class="org.kd.springcore.MyFirstProg">               
+   <property name="welcomeNote" value="Welcome! To My First Spring Project by giving value in property"/> 
+   </bean>
+   <bean class="org.kd.springcore.DemoBeanFactoryPostProcessor"> </bean>  -->
+   <!-- ////////////////////////this is property place holder concept -->
+   <bean id="myfirstprogBean" class="org.kd.springcore.MyFirstProg">               
+   <property name="welcomeNote" value="${welcomeNote}"></property> 
+   </bean>
+   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+         <value>classpath:spring.properties</value>
+     </property>
+   </bean>
+</beans>
